@@ -1,5 +1,7 @@
 package edu.gatech.oad.antlab.person;
 
+import java.util.Random;
+
 /**
  *  A simple class for person 2
  *  returns their name and a
@@ -30,8 +32,22 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 2 put your implementation here
-	  return null;
+		char characters[] = input.toCharArray();
+		Random rand = new Random();
+
+		// Fisher-Yates shuffle
+		for (int i = 0; i < (characters.length - 1); i++) {
+			// Find a random integer such that $i \leq j \lt k$ where k = characters.length
+			int randomRange = (characters.length - i);
+			int j = rand.nextInt(randomRange) + i;
+
+			// Swap characters[i] and characters[j]
+			char temp = characters[i];
+			characters[i] = characters[j];
+			characters[j] = temp;
+		}
+
+		return new String(characters);
 	}
 	/**
 	 * Return a string rep of this object
