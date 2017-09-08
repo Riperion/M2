@@ -1,0 +1,30 @@
+apply plugin: 'java'
+
+defaultTasks 'jar'
+
+group = 'edu.gatech.oad.antlab.pkg1'
+version = '1.0'
+description = """Milestone 2 of CS2340 Fall17"""
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile files('lib/resources.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+jar {
+    manifest {
+        attributes (
+        	"Implementation-Title": 'Milestone 2',
+            "Implementation-Version": version,
+            "Main-Class": 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+            "Class-Path": '../../lib/resources.jar'
+        )
+    }
+}
